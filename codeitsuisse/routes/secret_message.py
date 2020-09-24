@@ -1,9 +1,9 @@
 import logging
 import json
 
-from flask import request, Response
+from flask import request, jsonify;
 
-from codeitsuisse import app
+from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +17,7 @@ def evaluateSecretMessage():
         result.append(encrypt(test_case["n"], test_case["text"]))
 
     logging.info("My result :{}".format(result))
-    return Response(json.dumps(result), mimetype='application/json')
+    return jsonify(result)
 
 def encrypt(n, text):
     # removing spaces and non alpha num characters
